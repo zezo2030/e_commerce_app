@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/core/router/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/constants/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/auth_bottom_text.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/custom_login_form.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/constants/app_colors.dart';
+import 'package:e_commerce_app/core/utils/app_colors.dart';
 
 /// A class that contains all the text styles used in the app
 abstract class AppTextStyles {

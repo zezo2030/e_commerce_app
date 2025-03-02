@@ -9,10 +9,7 @@ class FirebaseAuthService implements AuthInterface {
 
   @override
   Future<void> signInWithEmailAndPassword(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(
-      email: email, password: password,
-      
-      );
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
   }
 
   @override
@@ -69,5 +66,10 @@ class FirebaseAuthService implements AuthInterface {
   @override
   Future<void> signOut() async {
     await _auth.signOut();
+  }
+
+  @override
+  Future<void> sendPasswordResetEmail(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
   }
 }

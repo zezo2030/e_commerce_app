@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/constants/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 
-class LoginButton extends StatelessWidget {
+import '../utils/app_colors.dart';
+
+class CustomBtn extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
 
-  const LoginButton({super.key, required this.onPressed, this.text = 'Login'});
+  const CustomBtn({super.key, required this.onPressed, required this.text});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/core/services/auth_service.dart';
 import 'package:e_commerce_app/features/auth/data/services/auth_interface.dart';
 import 'package:e_commerce_app/features/auth/data/services/firebase_auth_service.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,9 @@ class AuthCubit extends Cubit<AuthState> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
 
-  Future<void> signInWithEmailAndPassword({bool keepLoggedIn = false}) async {
+  bool? keepLoggedIn = false;
+
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInWithEmailAndPasswordLoading());
 
@@ -25,12 +28,8 @@ class AuthCubit extends Cubit<AuthState> {
         passwordController.text,
       );
 
-      // Set persistence based on keepLoggedIn preference
-      if (keepLoggedIn) {
-        await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
-      } else {
-        await FirebaseAuth.instance.setPersistence(Persistence.SESSION);
-      }
+      // حفظ حالة "احتفظ بتسجيل دخولي"
+      await AuthService.saveKeepLoggedIn(keepLoggedIn!);
 
       emit(SignInWithEmailAndPasswordSuccess());
     } catch (e) {
@@ -42,9 +41,14 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(SignInWithGoogleLoading());
       await _authInterface.signInWithGoogle();
+
+      // حفظ حالة "احتفظ بتسجيل دخولي"
+      await AuthService.saveKeepLoggedIn(keepLoggedIn!);
+
       emit(SignInWithGoogleSuccess());
     } catch (e) {
       emit(SignInWithGoogleFailure(e.toString()));
+      print('Error signing in with Google: $e');
     }
   }
 
@@ -52,6 +56,10 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       emit(SignInWithGithubLoading());
       await _authInterface.signInWithGithub(context);
+
+      // حفظ حالة "احتفظ بتسجيل دخولي"
+      await AuthService.saveKeepLoggedIn(keepLoggedIn!);
+
       emit(SignInWithGithubSuccess());
     } catch (e) {
       emit(SignInWithGithubFailure(e.toString()));
@@ -65,9 +73,36 @@ class AuthCubit extends Cubit<AuthState> {
         emailController.text,
         passwordController.text,
       );
+      // حفظ حالة "احتفظ بتسجيل دخولي"
+      await AuthService.saveKeepLoggedIn(keepLoggedIn!);
+
       emit(SignUpSuccess());
     } on FirebaseAuthException catch (e) {
       emit(SignUpFailure(e.toString()));
+    }
+  }
+
+  Future<void> signOut() async {
+    try {
+      await AuthService.signOut();
+    } catch (e) {
+      // Handle sign out errors
+      print('Error signing out: $e');
+    }
+  }
+
+  void checkKeepLoggedIn(bool? value) {
+    keepLoggedIn = value ?? false;
+    emit(CheckKeepLoggedIn());
+  }
+
+  Future<void> sendPasswordResetEmail() async {
+    try {
+      emit(SendPasswordResetEmailLoading());
+      await _authInterface.sendPasswordResetEmail(emailController.text);
+      emit(SendPasswordResetEmailSuccess());
+    } on FirebaseAuthException catch (e) {
+      emit(SendPasswordResetEmailFailure(e.toString()));
     }
   }
 }

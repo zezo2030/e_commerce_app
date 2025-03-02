@@ -45,3 +45,16 @@ final class SignUpFailure extends AuthState {
   final String error;
   SignUpFailure(this.error);
 }
+
+//! Check Keep Logged In
+final class CheckKeepLoggedIn extends AuthState {}
+
+//! Send Password Reset Email
+final class SendPasswordResetEmailLoading extends AuthState {}
+
+final class SendPasswordResetEmailSuccess extends AuthState {}
+
+final class SendPasswordResetEmailFailure extends AuthState {
+  final String error;
+  SendPasswordResetEmailFailure(this.error);
+}

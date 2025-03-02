@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/router/app_router.dart';
+import 'package:e_commerce_app/core/services/auth_service.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -23,9 +24,13 @@ class _SplashViewState extends State<SplashView> {
     if (!mounted) return;
 
     final user = FirebaseAuth.instance.currentUser;
+    final keepLoggedIn = AuthService.getKeepLoggedIn();
 
-    if (user != null) {
+    if (user != null && keepLoggedIn) {
       AppRouter.router.pushReplacement('/home');
+    } else if (user != null && !keepLoggedIn) {
+      await FirebaseAuth.instance.signOut();
+      AppRouter.router.pushReplacement('/login');
     } else {
       AppRouter.router.pushReplacement('/login');
     }

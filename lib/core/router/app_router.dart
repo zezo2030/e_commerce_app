@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
+import 'package:e_commerce_app/features/auth/presentation/views/forgot_password_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/signup_page.dart';
 import 'package:e_commerce_app/features/home/presentation/views/home_view.dart';
@@ -36,6 +37,15 @@ class AppRouter {
             (context, state) => BlocProvider(
               create: (context) => AuthCubit(context),
               child: const SignupPage(),
+            ),
+      ),
+
+      GoRoute(
+        path: Routes.forgotPassword,
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => AuthCubit(context),
+              child: ForgotPasswordPage(),
             ),
       ),
 

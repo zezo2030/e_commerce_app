@@ -10,5 +10,5 @@ abstract class AuthInterface {
   Future<void> signInWithGoogle();
   Future<void> signInWithGithub(BuildContext context);
   Future<void> signOut();
-
+  Future<void> sendPasswordResetEmail(String email);
 }

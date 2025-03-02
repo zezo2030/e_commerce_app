@@ -1,13 +1,14 @@
-import 'package:e_commerce_app/core/constants/app_colors.dart';
 import 'package:e_commerce_app/core/router/routes.dart';
 import 'package:e_commerce_app/core/utils/validation/form_validation.dart';
 import 'package:e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/auth_bottom_text.dart';
-import 'package:e_commerce_app/features/auth/presentation/widgets/login_button.dart';
+import 'package:e_commerce_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../core/utils/app_colors.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -91,7 +92,7 @@ class _SignupFormState extends State<SignupForm> {
           // Sign Up Button
           state is SignUpLoading
               ? const CircularProgressIndicator(color: AppColors.primaryButton)
-              : LoginButton(
+              : CustomBtn(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     await authCubit.signUpWithEmailAndPassword();

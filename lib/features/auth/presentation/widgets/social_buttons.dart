@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:e_commerce_app/core/constants/app_colors.dart';
+
+import '../../../../core/utils/app_colors.dart';
 
 class SocialButtons extends StatelessWidget {
   final VoidCallback onGooglePressed;
