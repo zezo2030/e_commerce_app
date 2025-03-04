@@ -75,9 +75,9 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                     },
                     activeColor: AppColors.primaryButton,
                   ),
-                  const Text(
+                  Text(
                     'Keep me logged in',
-                    style: AppTextStyles.bodyMedium,
+                    style: AppTextStyles.bodyMedium.copyWith(fontSize: 12),
                   ),
                   const Spacer(),
                   TextButton(
@@ -89,6 +89,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                       style: TextStyle(
                         color: AppColors.primaryButton,
                         fontWeight: FontWeight.bold,
+                        fontSize: 12,
                       ),
                     ),
                   ),
