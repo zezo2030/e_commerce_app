@@ -27,7 +27,7 @@ class _SplashViewState extends State<SplashView> {
     final keepLoggedIn = AuthService.getKeepLoggedIn();
 
     if (user != null && keepLoggedIn) {
-      AppRouter.router.pushReplacement('/home');
+      AppRouter.router.pushReplacement('/main');
     } else if (user != null && !keepLoggedIn) {
       await FirebaseAuth.instance.signOut();
       AppRouter.router.pushReplacement('/login');

@@ -3,6 +3,8 @@ import 'package:e_commerce_app/features/auth/presentation/views/forgot_password_
 import 'package:e_commerce_app/features/auth/presentation/views/login_page.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/signup_page.dart';
 import 'package:e_commerce_app/features/home/presentation/views/home_view.dart';
+import 'package:e_commerce_app/features/main/presentation/cubit/main_cubit.dart';
+import 'package:e_commerce_app/features/main/presentation/views/main_view.dart';
 import 'package:e_commerce_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -50,6 +52,14 @@ class AppRouter {
       ),
 
       GoRoute(path: Routes.home, builder: (context, state) => const HomeView()),
+      GoRoute(
+        path: Routes.main,
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => MainCubit(),
+              child:  MainView(),
+            ),
+      ),
     ],
   );
 }

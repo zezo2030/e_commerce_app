@@ -38,7 +38,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
         if (state is SignInWithGithubSuccess ||
             state is SignInWithGoogleSuccess ||
             state is SignInWithEmailAndPasswordSuccess) {
-          AppRouter.router.pushReplacement('/home');
+          AppRouter.router.pushReplacement('/main');
         }
       },
       builder: (context, state) {
