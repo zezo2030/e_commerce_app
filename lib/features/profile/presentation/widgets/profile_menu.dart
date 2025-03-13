@@ -1,4 +1,8 @@
+import 'package:e_commerce_app/core/router/routes.dart';
+import 'package:e_commerce_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'profile_menu_item.dart';
 
 class ProfileMenu extends StatelessWidget {
@@ -69,6 +73,7 @@ class ProfileMenu extends StatelessWidget {
           title: 'Appearance',
           onTap: () {
             // Navigate to theme settings
+            context.push(Routes.appearance);
           },
         ),
         const Divider(height: 40),
@@ -109,8 +114,10 @@ class ProfileMenu extends StatelessWidget {
         ProfileMenuItem(
           icon: Icons.logout,
           title: 'Logout',
-          onTap: () {
+          onTap: () async {
             // Handle logout
+            await context.read<AuthCubit>().signOut();
+            context.pushReplacement(Routes.login);
           },
           iconColor: Colors.red,
         ),

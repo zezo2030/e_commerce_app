@@ -44,12 +44,7 @@ class _SignupFormState extends State<SignupForm> {
             labelText: 'First Name',
             prefixIcon: FontAwesomeIcons.user,
             keyboardType: TextInputType.name,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your first name';
-              }
-              return null;
-            },
+            validator: FormValidation.validateName,
           ),
           const SizedBox(height: 16),
 
@@ -59,12 +54,7 @@ class _SignupFormState extends State<SignupForm> {
             labelText: 'Last Name',
             prefixIcon: FontAwesomeIcons.user,
             keyboardType: TextInputType.name,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your last name';
-              }
-              return null;
-            },
+            validator: FormValidation.validateName,
           ),
           const SizedBox(height: 16),
 

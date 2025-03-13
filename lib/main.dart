@@ -24,5 +24,5 @@ void main() async {
     }
   });
 
-  runApp(ECommerceApp());
+  runApp(const ECommerceApp());
 }

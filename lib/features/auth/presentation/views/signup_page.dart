@@ -18,7 +18,7 @@ class SignupPage extends StatelessWidget {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Account created successfully!')),
             );
-            context.pushReplacement(Routes.home);
+            context.pushReplacement(Routes.main);
           } else if (state is SignUpFailure) {
             ScaffoldMessenger.of(
               context,
