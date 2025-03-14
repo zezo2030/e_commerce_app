@@ -35,7 +35,7 @@ A modern Flutter e-commerce application with a beautiful UI, multi-language supp
 ## Screenshots
 
 <p align="center">
-  <img src="assets/screen/home_screen_light.png" width="250" alt="Home Screen Light Mode">
+  <img src="assets/screen/Screenshot 2025-03-14 185939.png" width="250" alt="Home Screen Light Mode">
   <img src="assets/screen/home_screen_dark.png" width="250" alt="Home Screen Dark Mode">
   <img src="assets/screen/categories_screen.png" width="250" alt="Categories Screen">
 </p>
