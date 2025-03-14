@@ -34,7 +34,17 @@ A modern Flutter e-commerce application with a beautiful UI, multi-language supp
 
 ## Screenshots
 
-(Screenshots will be added here)
+<p align="center">
+  <img src="assets/screen/home_screen_light.png" width="250" alt="Home Screen Light Mode">
+  <img src="assets/screen/home_screen_dark.png" width="250" alt="Home Screen Dark Mode">
+  <img src="assets/screen/categories_screen.png" width="250" alt="Categories Screen">
+</p>
+
+<p align="center">
+  <img src="assets/screen/product_details.png" width="250" alt="Product Details">
+  <img src="assets/screen/cart_screen.png" width="250" alt="Shopping Cart">
+  <img src="assets/screen/settings_screen.png" width="250" alt="Settings Screen">
+</p>
 
 ## Language Support
 
@@ -44,6 +54,11 @@ The app fully supports the following languages:
 - Arabic (العربية)
 
 Language can be changed from the settings menu.
+
+<p align="center">
+  <img src="assets/screen/english_ui.png" width="250" alt="English UI">
+  <img src="assets/screen/arabic_ui.png" width="250" alt="Arabic UI">
+</p>
 
 ---
 
@@ -83,7 +98,17 @@ Language can be changed from the settings menu.
 
 ## لقطات الشاشة
 
-(سيتم إضافة لقطات الشاشة هنا)
+<p align="center">
+  <img src="assets/screen/home_screen_light.png" width="250" alt="الشاشة الرئيسية - الوضع الفاتح">
+  <img src="assets/screen/home_screen_dark.png" width="250" alt="الشاشة الرئيسية - الوضع الداكن">
+  <img src="assets/screen/categories_screen.png" width="250" alt="شاشة الفئات">
+</p>
+
+<p align="center">
+  <img src="assets/screen/product_details.png" width="250" alt="تفاصيل المنتج">
+  <img src="assets/screen/cart_screen.png" width="250" alt="سلة التسوق">
+  <img src="assets/screen/settings_screen.png" width="250" alt="شاشة الإعدادات">
+</p>
 
 ## دعم اللغات
 
@@ -93,3 +118,8 @@ Language can be changed from the settings menu.
 - العربية
 
 يمكن تغيير اللغة من قائمة الإعدادات.
+
+<p align="center">
+  <img src="assets/screen/english_ui.png" width="250" alt="واجهة اللغة الإنجليزية">
+  <img src="assets/screen/arabic_ui.png" width="250" alt="واجهة اللغة العربية">
+</p>
