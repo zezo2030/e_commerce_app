@@ -25,7 +25,7 @@ class CategoriesGrid extends StatelessWidget {
           return CategoryItem(
             icon: category.icon,
             label: category.name,
-            color: category.color,
+            color: _getCategoryColor(context, index),
             onTap: () {
               // Navigate to specific category products
               debugPrint('Navigate to ${category.name} products');
@@ -36,52 +36,73 @@ class CategoriesGrid extends StatelessWidget {
     );
   }
 
+  // Get category color based on the theme
+  Color _getCategoryColor(BuildContext context, int index) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    // Use original colors for light theme, but adapted colors for dark theme
+    final categoryColors = [
+      isDark ? theme.colorScheme.primary : Colors.blue,
+      isDark ? theme.colorScheme.secondary : Colors.red,
+      isDark ? theme.colorScheme.tertiary : Colors.purple,
+      isDark ? theme.colorScheme.primary.withBlue(150) : Colors.orange,
+      isDark ? theme.colorScheme.secondary.withRed(220) : Colors.pink,
+      isDark ? theme.colorScheme.tertiary.withGreen(180) : Colors.green,
+      isDark ? theme.colorScheme.primary.withOpacity(0.8) : Colors.amber,
+      isDark ? theme.colorScheme.secondary.withOpacity(0.8) : Colors.teal,
+      isDark ? theme.colorScheme.tertiary.withOpacity(0.8) : Colors.grey,
+    ];
+
+    return categoryColors[index % categoryColors.length];
+  }
+
   // Sample categories data - in a real app, this would come from a repository
   final List<CategoryModel> _categories = [
     CategoryModel(
       name: 'Fashion',
       icon: FontAwesomeIcons.shirt,
-      color: Colors.blue,
+      color: Colors.transparent, // Color will be set in build
     ),
     CategoryModel(
       name: 'Electronics',
       icon: FontAwesomeIcons.mobileScreen,
-      color: Colors.red,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Computers',
       icon: FontAwesomeIcons.laptopCode,
-      color: Colors.purple,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Home',
       icon: FontAwesomeIcons.house,
-      color: Colors.orange,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Beauty',
       icon: FontAwesomeIcons.sprayCan,
-      color: Colors.pink,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Sports',
       icon: FontAwesomeIcons.baseball,
-      color: Colors.green,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Toys',
       icon: FontAwesomeIcons.gamepad,
-      color: Colors.amber,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Books',
       icon: FontAwesomeIcons.book,
-      color: Colors.teal,
+      color: Colors.transparent,
     ),
     CategoryModel(
       name: 'Automotive',
       icon: FontAwesomeIcons.car,
-      color: Colors.grey,
+      color: Colors.transparent,
     ),
   ];
 }

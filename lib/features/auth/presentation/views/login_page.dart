@@ -1,7 +1,5 @@
 import 'package:e_commerce_app/core/router/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/utils/app_colors.dart';
-import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/auth_bottom_text.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/custom_login_form.dart';
 
@@ -10,8 +8,10 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      backgroundColor: AppColors.scaffoldBackground,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -24,9 +24,12 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     const Spacer(),
-                    const Text(
+                    Text(
                       'Welcome Back',
-                      style: AppTextStyles.heading1,
+                      style: theme.textTheme.headlineLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 28,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 48),

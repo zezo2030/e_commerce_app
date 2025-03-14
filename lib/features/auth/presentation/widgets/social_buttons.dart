@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../core/utils/app_colors.dart';
-
 class SocialButtons extends StatelessWidget {
   final VoidCallback onGooglePressed;
   final VoidCallback onGithubPressed;
@@ -15,6 +13,8 @@ class SocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -24,8 +24,8 @@ class SocialButtons extends StatelessWidget {
             icon: const FaIcon(FontAwesomeIcons.google, size: 20),
             label: const Text('Google'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.secondaryButton,
-              foregroundColor: Colors.black87,
+              backgroundColor: theme.colorScheme.secondary,
+              foregroundColor: theme.colorScheme.onSecondary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -36,15 +36,18 @@ class SocialButtons extends StatelessWidget {
         Expanded(
           child: ElevatedButton.icon(
             onPressed: onGithubPressed,
-            icon: const FaIcon(
+            icon: FaIcon(
               FontAwesomeIcons.github,
               size: 20,
-              color: AppColors.githubBlue,
+              color:
+                  theme.brightness == Brightness.light
+                      ? Colors.black87
+                      : Colors.white70,
             ),
             label: const Text('Github'),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.secondaryButton,
-              foregroundColor: Colors.black87,
+              backgroundColor: theme.colorScheme.secondary,
+              foregroundColor: theme.colorScheme.onSecondary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

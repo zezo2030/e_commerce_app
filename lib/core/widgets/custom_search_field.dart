@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:e_commerce_app/core/utils/app_colors.dart';
 
 class CustomSearchField extends StatelessWidget {
   final TextEditingController controller;
@@ -26,14 +25,16 @@ class CustomSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Container(
       height: height ?? 50.h,
       decoration: BoxDecoration(
-        color: backgroundColor ?? AppColors.inputFill,
+        color: backgroundColor ?? theme.inputDecorationTheme.fillColor,
         borderRadius: borderRadius ?? BorderRadius.circular(10.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.05),
+            color: theme.shadowColor.withOpacity(0.05),
             spreadRadius: 1,
             blurRadius: 3,
             offset: const Offset(0, 1),
@@ -43,16 +44,16 @@ class CustomSearchField extends StatelessWidget {
       child: TextField(
         controller: controller,
         onChanged: onChanged,
-        style: TextStyle(fontSize: 14.sp),
+        style: theme.textTheme.bodyMedium?.copyWith(fontSize: 14.sp),
         decoration: InputDecoration(
           hintText: hintText,
           hintStyle: TextStyle(
-            color: AppColors.secondaryText.withOpacity(0.6),
+            color: theme.colorScheme.onSurface.withOpacity(0.6),
             fontSize: 14.sp,
           ),
           prefixIcon: Icon(
             Icons.search,
-            color: iconColor ?? AppColors.secondaryText.withOpacity(0.7),
+            color: iconColor ?? theme.colorScheme.onSurface.withOpacity(0.7),
             size: 20.sp,
           ),
           suffixIcon:
@@ -61,7 +62,8 @@ class CustomSearchField extends StatelessWidget {
                     icon: Icon(
                       Icons.clear,
                       color:
-                          iconColor ?? AppColors.secondaryText.withOpacity(0.7),
+                          iconColor ??
+                          theme.colorScheme.onSurface.withOpacity(0.7),
                       size: 20.sp,
                     ),
                     onPressed: () {

@@ -44,14 +44,12 @@ abstract class AppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.normal,
     fontFamily: 'Poppins',
-    color: AppColors.primaryText,
   );
 
-  static const TextStyle bodyMedium = TextStyle(
+  static TextStyle bodyMedium = TextStyle(
     fontSize: 14,
     fontWeight: FontWeight.normal,
     fontFamily: 'Poppins',
-    color: AppColors.primaryText,
   );
 
   static const TextStyle bodySmall = TextStyle(

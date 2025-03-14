@@ -1,4 +1,3 @@
-import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class DividerWithText extends StatelessWidget {
@@ -8,31 +7,24 @@ class DividerWithText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final dividerColor = theme.colorScheme.onSurface.withOpacity(0.3);
+
     return Row(
       children: [
-        Expanded(
-          child: Divider(
-            color: AppColors.secondaryText.withOpacity(0.3),
-            thickness: 1,
-          ),
-        ),
+        Expanded(child: Divider(color: dividerColor, thickness: 1)),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             text,
             style: TextStyle(
-              color: AppColors.secondaryText,
+              color: theme.colorScheme.onSurface.withOpacity(0.7),
               fontSize: 14,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        Expanded(
-          child: Divider(
-            color: AppColors.secondaryText.withOpacity(0.3),
-            thickness: 1,
-          ),
-        ),
+        Expanded(child: Divider(color: dividerColor, thickness: 1)),
       ],
     );
   }

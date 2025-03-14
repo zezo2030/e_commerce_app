@@ -38,8 +38,11 @@ class _CategoriesViewState extends State<CategoriesView> {
   }
 
   void _showFilterBottomSheet() {
+    final theme = Theme.of(context);
+
     showModalBottomSheet(
       context: context,
+      backgroundColor: theme.scaffoldBackgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
@@ -52,7 +55,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               children: [
                 Text(
                   'Filter Categories',
-                  style: TextStyle(
+                  style: theme.textTheme.titleLarge?.copyWith(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -73,12 +76,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () => Navigator.pop(context),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 12.h),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                    ),
+                    style: theme.elevatedButtonTheme.style,
                     child: Text('Apply Filters'),
                   ),
                 ),

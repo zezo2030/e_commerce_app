@@ -1,7 +1,5 @@
 import 'package:e_commerce_app/core/router/app_router.dart';
 import 'package:e_commerce_app/core/router/routes.dart';
-import 'package:e_commerce_app/core/utils/app_colors.dart';
-import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:e_commerce_app/core/utils/validation/form_validation.dart';
 import 'package:e_commerce_app/core/widgets/custom_text_form_field.dart';
 import 'package:e_commerce_app/features/auth/presentation/auth_cubit/auth_cubit.dart';
@@ -33,6 +31,8 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInWithGithubSuccess ||
@@ -73,21 +73,21 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                     onChanged: (value) {
                       authCubit.checkKeepLoggedIn(value);
                     },
-                    activeColor: AppColors.primaryButton,
+                    activeColor: theme.colorScheme.primary,
                   ),
                   Text(
                     'Keep me logged in',
-                    style: AppTextStyles.bodyMedium.copyWith(fontSize: 12),
+                    style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12),
                   ),
                   const Spacer(),
                   TextButton(
                     onPressed: () {
                       AppRouter.router.push(Routes.forgotPassword);
                     },
-                    child: const Text(
+                    child: Text(
                       'Forgot Password?',
                       style: TextStyle(
-                        color: AppColors.primaryButton,
+                        color: theme.colorScheme.primary,
                         fontWeight: FontWeight.bold,
                         fontSize: 12,
                       ),
@@ -99,9 +99,9 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               const SizedBox(height: 24),
 
               state is SignInWithEmailAndPasswordLoading
-                  ? const Center(
+                  ? Center(
                     child: CircularProgressIndicator(
-                      color: AppColors.primaryButton,
+                      color: theme.colorScheme.primary,
                     ),
                   )
                   : CustomBtn(
@@ -119,9 +119,9 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               // Social buttons or other login options
               if (state is SignInWithGithubLoading ||
                   state is SignInWithGoogleLoading)
-                const Center(
+                Center(
                   child: CircularProgressIndicator(
-                    color: AppColors.primaryButton,
+                    color: theme.colorScheme.primary,
                   ),
                 )
               else

@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/utils/app_text_styles.dart';
-
-import '../utils/app_colors.dart';
 
 class CustomBtn extends StatelessWidget {
   final VoidCallback onPressed;
@@ -11,20 +8,21 @@ class CustomBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return SizedBox(
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryButton,
-          foregroundColor: AppColors.lightText,
-          padding: const EdgeInsets.symmetric(vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+        style: theme.elevatedButtonTheme.style,
+        child: Text(
+          text,
+          style: theme.textTheme.labelLarge?.copyWith(
+            color: theme.colorScheme.onPrimary,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        child: Text(text, style: AppTextStyles.buttonTextLarge),
       ),
     );
   }

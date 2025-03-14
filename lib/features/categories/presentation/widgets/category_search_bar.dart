@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_commerce_app/core/widgets/custom_search_field.dart';
-import 'package:e_commerce_app/core/utils/app_colors.dart';
 
 class CategorySearchBar extends StatelessWidget {
   final TextEditingController searchController;
@@ -17,6 +16,8 @@ class CategorySearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: Row(
@@ -26,7 +27,7 @@ class CategorySearchBar extends StatelessWidget {
               controller: searchController,
               onChanged: onChanged,
               hintText: 'Search categories',
-              backgroundColor: Colors.grey[100],
+              backgroundColor: theme.inputDecorationTheme.fillColor,
               borderRadius: BorderRadius.circular(12.r),
             ),
           ),
@@ -36,14 +37,14 @@ class CategorySearchBar extends StatelessWidget {
               height: 50.h,
               width: 50.w,
               decoration: BoxDecoration(
-                color: AppColors.secondaryButton.withOpacity(0.2),
+                color: theme.colorScheme.secondary.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: IconButton(
                 onPressed: onVoiceSearch,
                 icon: Icon(
                   Icons.mic,
-                  color: AppColors.primaryButton,
+                  color: theme.colorScheme.primary,
                   size: 24.sp,
                 ),
               ),

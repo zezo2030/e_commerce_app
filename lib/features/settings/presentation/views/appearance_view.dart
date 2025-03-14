@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/core/utils/app_colors.dart';
-import 'package:e_commerce_app/features/settings/presentation/cubit/theme_cubit.dart';
+import 'package:e_commerce_app/features/settings/presentation/cubit/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,19 +37,23 @@ class AppearanceView extends StatelessWidget {
     return Card(
       elevation: 4,
       child: SwitchListTile(
-        title: const Text(
-          'Dark Theme',
-          style: TextStyle(fontWeight: FontWeight.w500),
+        title: Text(
+          state is DarkThemeState ? 'Dark Theme' : 'Light Theme',
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
-        subtitle: const Text('Enable dark mode for a darker appearance'),
+        subtitle: Text(
+          state is DarkThemeState
+              ? 'Enable dark mode for a darker appearance'
+              : 'Enable light mode for a lighter appearance',
+        ),
         secondary: Icon(
-          state.isDarkTheme ? Icons.dark_mode : Icons.light_mode,
+          state is DarkThemeState ? Icons.dark_mode : Icons.light_mode,
           color:
-              state.isDarkTheme
+              state is DarkThemeState
                   ? AppColors.accentPurple
                   : AppColors.primaryPurple,
         ),
-        value: state.isDarkTheme,
+        value: state is DarkThemeState,
         onChanged: (_) {
           context.read<ThemeCubit>().toggleTheme();
         },
@@ -75,7 +79,7 @@ class AppearanceView extends StatelessWidget {
           children: [
             _buildColorItem('Primary', colorScheme.primary),
             _buildColorItem('Secondary', colorScheme.secondary),
-            _buildColorItem('Background', colorScheme.background),
+            _buildColorItem('Background', colorScheme.surface),
             _buildColorItem('Surface', colorScheme.surface),
           ],
         ),

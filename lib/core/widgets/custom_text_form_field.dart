@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce_app/core/utils/app_colors.dart';
-import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -37,21 +35,28 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return TextFormField(
       controller: widget.controller,
       keyboardType: widget.keyboardType,
       obscureText: _obscureText,
-      style: AppTextStyles.bodyLarge,
+      style: theme.textTheme.bodyLarge,
       decoration: InputDecoration(
         labelText: widget.labelText,
-        labelStyle: AppTextStyles.formLabel,
-        prefixIcon: Icon(widget.prefixIcon, size: 20),
+        labelStyle: theme.textTheme.labelMedium,
+        prefixIcon: Icon(
+          widget.prefixIcon,
+          size: 20,
+          color: theme.colorScheme.primary,
+        ),
         suffixIcon:
             widget.showPasswordToggle
                 ? IconButton(
                   icon: Icon(
                     _obscureText ? Icons.visibility_off : Icons.visibility,
-                    color: AppColors.secondaryText,
+                    color: colorScheme.onSurface.withOpacity(0.6),
                   ),
                   onPressed: () {
                     setState(() {
@@ -62,32 +67,30 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : null,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: AppColors.secondaryText.withOpacity(0.3),
-          ),
+          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.3)),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(
-            color: AppColors.secondaryText.withOpacity(0.3),
-          ),
+          borderSide: BorderSide(color: colorScheme.onSurface.withOpacity(0.3)),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.primaryButton),
+          borderSide: BorderSide(color: colorScheme.primary),
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: theme.colorScheme.error),
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Colors.red),
+          borderSide: BorderSide(color: theme.colorScheme.error),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 16,
         ),
+        filled: true,
+        fillColor: theme.inputDecorationTheme.fillColor,
       ),
       validator: widget.validator,
     );
