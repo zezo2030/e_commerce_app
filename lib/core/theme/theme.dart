@@ -61,7 +61,7 @@ class AppTheme {
       primary: AppColors.primaryPurple,
       secondary: AppColors.accentPurple,
       surface: AppColors.white,
-      background: AppColors.scaffoldBackground,
+      // background: AppColors.scaffoldBackground,
     ),
     cardTheme: const CardTheme(color: AppColors.cardBackground, elevation: 2),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -33,18 +34,18 @@ class _BannerCarouselState extends State<BannerCarousel> {
             },
             children: [
               BannerItem(
-                title: "Summer Sale",
-                subtitle: "Up to 50% off",
+                title: "summer_sale".tr(),
+                subtitle: 'up_to_50_off'.tr(),
                 color: Colors.orange.shade400,
               ),
               BannerItem(
-                title: "New Arrivals",
-                subtitle: "Check out our latest items",
+                title: "new_arrivals".tr(),
+                subtitle: "check_out_our_latest_items".tr(),
                 color: Colors.blue.shade400,
               ),
               BannerItem(
-                title: "Special Offers",
-                subtitle: "Limited time promotions",
+                title: "special_offers".tr(),
+                subtitle: "limited_time_promotions".tr(),
                 color: Colors.purple.shade400,
               ),
             ],
@@ -131,7 +132,10 @@ class BannerItem extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.r),
                     ),
                   ),
-                  child: Text('Shop Now', style: TextStyle(fontSize: 14.sp)),
+                  child: Text(
+                    'shop_now'.tr(),
+                    style: TextStyle(fontSize: 14.sp),
+                  ),
                 ),
               ],
             ),

@@ -5,6 +5,7 @@ import 'package:e_commerce_app/features/favorites/presentation/views/favorites_v
 import 'package:e_commerce_app/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/features/main/presentation/cubit/main_cubit.dart';
 import 'package:e_commerce_app/features/profile/presentation/views/profile_view.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,27 +52,27 @@ class MainView extends StatelessWidget {
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined),
                 activeIcon: Icon(Icons.home),
-                label: 'Home',
+                label: 'home'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.category_outlined),
                 activeIcon: Icon(Icons.category),
-                label: 'Categories',
+                label: 'categories'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.shopping_cart_outlined),
                 activeIcon: Icon(Icons.shopping_cart),
-                label: 'Cart',
+                label: 'cart'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_outline),
                 activeIcon: Icon(Icons.favorite),
-                label: 'Favorites',
+                label: 'favorites'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person_outline),
                 activeIcon: Icon(Icons.person),
-                label: 'Profile',
+                label: 'profile'.tr(),
               ),
             ],
           ),

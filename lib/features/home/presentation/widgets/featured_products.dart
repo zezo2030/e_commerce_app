@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,12 +17,12 @@ class FeaturedProducts extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Featured Products',
+                'featured_products'.tr(),
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
               ),
               TextButton(
                 onPressed: () {},
-                child: Text('See All', style: TextStyle(fontSize: 14.sp)),
+                child: Text('see_all'.tr(), style: TextStyle(fontSize: 14.sp)),
               ),
             ],
           ),
@@ -38,29 +39,29 @@ class FeaturedProducts extends StatelessWidget {
           children: [
             ProductCard(
               imageUrl: 'assets/images/Frame.png',
-              name: 'Wireless Headphones',
-              category: 'Electronics',
+              name: 'wireless_headphones'.tr(),
+              category: 'electronics'.tr(),
               price: 89.99,
               discountPercent: 20,
             ),
             ProductCard(
               imageUrl: "assets/images/Frame.png",
-              name: 'Smart Watch',
-              category: 'Electronics',
+              name: 'smart_watch'.tr(),
+              category: 'electronics'.tr(),
               price: 129.99,
               discountPercent: 0,
             ),
             ProductCard(
               imageUrl: 'assets/images/Frame.png',
-              name: 'Summer T-Shirt',
-              category: 'Fashion',
+              name: 'summer_tshirt'.tr(),
+              category: 'fashion'.tr(),
               price: 29.99,
               discountPercent: 15,
             ),
             ProductCard(
               imageUrl: 'assets/images/Frame.png',
-              name: 'Running Shoes',
-              category: 'Sports',
+              name: 'running_shoes'.tr(),
+              category: 'sports'.tr(),
               price: 79.99,
               discountPercent: 0,
             ),

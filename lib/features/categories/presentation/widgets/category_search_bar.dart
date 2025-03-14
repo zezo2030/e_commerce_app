@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:e_commerce_app/core/widgets/custom_search_field.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CategorySearchBar extends StatelessWidget {
   final TextEditingController searchController;
@@ -26,7 +27,7 @@ class CategorySearchBar extends StatelessWidget {
             child: CustomSearchField(
               controller: searchController,
               onChanged: onChanged,
-              hintText: 'Search categories',
+              hintText: 'search_categories'.tr(),
               backgroundColor: theme.inputDecorationTheme.fillColor,
               borderRadius: BorderRadius.circular(12.r),
             ),

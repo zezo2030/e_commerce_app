@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:e_commerce_app/core/services/service_locator.dart';
+import 'package:e_commerce_app/features/categories/domain/cubit/categories_cubit.dart';
 import '../widgets/category_header.dart';
 import '../widgets/category_search_bar.dart';
 import '../widgets/categories_grid.dart';
@@ -13,7 +17,18 @@ class CategoriesView extends StatefulWidget {
 
 class _CategoriesViewState extends State<CategoriesView> {
   final TextEditingController _searchController = TextEditingController();
-  String _searchQuery = '';
+  late final CategoriesCubit _categoriesCubit;
+
+  @override
+  void initState() {
+    super.initState();
+    _categoriesCubit = getIt<CategoriesCubit>();
+    _loadCategories();
+  }
+
+  Future<void> _loadCategories() async {
+    await _categoriesCubit.loadCategories();
+  }
 
   @override
   void dispose() {
@@ -22,17 +37,15 @@ class _CategoriesViewState extends State<CategoriesView> {
   }
 
   void _onSearchChanged(String query) {
-    setState(() {
-      _searchQuery = query;
-    });
+    _categoriesCubit.searchCategories(query);
   }
 
   void _handleVoiceSearch() {
     // In a real app, this would implement speech-to-text functionality
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Voice search functionality would be implemented here'),
-        duration: Duration(seconds: 2),
+      SnackBar(
+        content: Text('voice_search_not_implemented'.tr()),
+        duration: const Duration(seconds: 2),
       ),
     );
   }
@@ -54,7 +67,7 @@ class _CategoriesViewState extends State<CategoriesView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Filter Categories',
+                  'filter_categories'.tr(),
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontSize: 18.sp,
                     fontWeight: FontWeight.bold,
@@ -65,10 +78,10 @@ class _CategoriesViewState extends State<CategoriesView> {
                 Wrap(
                   spacing: 8.w,
                   children: [
-                    _buildFilterChip('Popular'),
-                    _buildFilterChip('New'),
-                    _buildFilterChip('A-Z'),
-                    _buildFilterChip('Z-A'),
+                    _buildFilterChip('popular'.tr()),
+                    _buildFilterChip('new'.tr()),
+                    _buildFilterChip('a_z'.tr()),
+                    _buildFilterChip('z_a'.tr()),
                   ],
                 ),
                 SizedBox(height: 16.h),
@@ -77,7 +90,7 @@ class _CategoriesViewState extends State<CategoriesView> {
                   child: ElevatedButton(
                     onPressed: () => Navigator.pop(context),
                     style: theme.elevatedButtonTheme.style,
-                    child: Text('Apply Filters'),
+                    child: Text('apply_filters'.tr()),
                   ),
                 ),
               ],
@@ -97,21 +110,32 @@ class _CategoriesViewState extends State<CategoriesView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(height: 16.h),
-            CategoryHeader(onFilterTap: _showFilterBottomSheet),
-            SizedBox(height: 16.h),
-            CategorySearchBar(
-              searchController: _searchController,
-              onChanged: _onSearchChanged,
-              onVoiceSearch: _handleVoiceSearch,
-            ),
-            SizedBox(height: 16.h),
-            Expanded(child: SingleChildScrollView(child: CategoriesGrid())),
-          ],
+    return BlocProvider.value(
+      value: _categoriesCubit,
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(height: 16.h),
+              CategoryHeader(onFilterTap: _showFilterBottomSheet),
+              SizedBox(height: 16.h),
+              CategorySearchBar(
+                searchController: _searchController,
+                onChanged: _onSearchChanged,
+                onVoiceSearch: _handleVoiceSearch,
+              ),
+              SizedBox(height: 16.h),
+              Expanded(
+                child: RefreshIndicator(
+                  onRefresh: _loadCategories,
+                  child: SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: const CategoriesGrid(),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

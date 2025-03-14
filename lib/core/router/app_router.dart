@@ -6,6 +6,7 @@ import 'package:e_commerce_app/features/home/presentation/views/home_view.dart';
 import 'package:e_commerce_app/features/main/presentation/cubit/main_cubit.dart';
 import 'package:e_commerce_app/features/main/presentation/views/main_view.dart';
 import 'package:e_commerce_app/features/profile/presentation/views/profile_view.dart';
+import 'package:e_commerce_app/features/settings/presentation/views/language_settings_view.dart';
 import 'package:e_commerce_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -58,14 +59,21 @@ class AppRouter {
         builder:
             (context, state) => BlocProvider(
               create: (context) => MainCubit(),
-              child:  MainView(),
+              child: MainView(),
             ),
       ),
       GoRoute(
         path: Routes.profile,
         builder: (context, state) => const ProfileView(),
       ),
-      GoRoute(path: Routes.appearance, builder: (context, state) => AppearanceView()),
+      GoRoute(
+        path: Routes.appearance,
+        builder: (context, state) => AppearanceView(),
+      ),
+      GoRoute(
+        path: Routes.language,
+        builder: (context, state) => const LanguageSettingsView(),
+      ),
     ],
   );
 }

@@ -14,6 +14,7 @@ class Routes {
   static const String profile = '/profile';
 
   static const String appearance = '/appearance';
+  static const String language = '/language';
 
   // Additional routes
   static const String productDetails = '/home/product/:id';

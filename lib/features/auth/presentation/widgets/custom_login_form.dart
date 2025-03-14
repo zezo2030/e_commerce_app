@@ -6,6 +6,7 @@ import 'package:e_commerce_app/features/auth/presentation/auth_cubit/auth_cubit.
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/divider_with_text.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/social_buttons.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -49,7 +50,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
             children: [
               CustomTextFormField(
                 controller: authCubit.emailController,
-                labelText: 'Email',
+                labelText: 'email'.tr(),
                 prefixIcon: FontAwesomeIcons.envelope,
                 keyboardType: TextInputType.emailAddress,
                 validator: FormValidation.validateEmail,
@@ -57,7 +58,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               const SizedBox(height: 16),
               CustomTextFormField(
                 controller: authCubit.passwordController,
-                labelText: 'Password',
+                labelText: 'password'.tr(),
                 prefixIcon: FontAwesomeIcons.lock,
                 obscureText: true,
                 showPasswordToggle: true,
@@ -76,7 +77,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                     activeColor: theme.colorScheme.primary,
                   ),
                   Text(
-                    'Keep me logged in',
+                    'keep_logged_in'.tr(),
                     style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12),
                   ),
                   const Spacer(),
@@ -85,7 +86,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                       AppRouter.router.push(Routes.forgotPassword);
                     },
                     child: Text(
-                      'Forgot Password?',
+                      'forgot_password'.tr(),
                       style: TextStyle(
                         color: theme.colorScheme.primary,
                         fontWeight: FontWeight.bold,
@@ -105,7 +106,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                     ),
                   )
                   : CustomBtn(
-                    text: 'Login',
+                    text: 'login'.tr(),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         authCubit.signInWithEmailAndPassword();
@@ -113,7 +114,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                     },
                   ),
               const SizedBox(height: 50),
-              const DividerWithText(text: 'OR'),
+              DividerWithText(text: 'or'.tr()),
               const SizedBox(height: 24),
 
               // Social buttons or other login options

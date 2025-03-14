@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/router/routes.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/auth_bottom_text.dart';
 import 'package:e_commerce_app/features/auth/presentation/widgets/custom_login_form.dart';
@@ -25,7 +26,7 @@ class LoginPage extends StatelessWidget {
                   children: [
                     const Spacer(),
                     Text(
-                      'Welcome Back',
+                      'welcome_back'.tr(),
                       style: theme.textTheme.headlineLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
@@ -35,10 +36,10 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: 48),
                     const CustomLoginForm(),
                     const SizedBox(height: 40),
-                    const Center(
+                    Center(
                       child: AuthBottomText(
-                        text: 'Don\'t have an account?',
-                        buttonText: 'Sign Up',
+                        text: 'no_account'.tr(),
+                        buttonText: 'sign_up'.tr(),
                         routeToNavigate: Routes.register,
                       ),
                     ),

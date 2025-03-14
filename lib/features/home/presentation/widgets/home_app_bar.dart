@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,12 +17,12 @@ class HomeAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hello, User!',
+                'hello_user'.tr(),
                 style: TextStyle(color: Colors.grey[600], fontSize: 12.sp),
               ),
               SizedBox(height: 4.h),
               Text(
-                'Find your favorite products',
+                'find_products'.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
               ),
             ],

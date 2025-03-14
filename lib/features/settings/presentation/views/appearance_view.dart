@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/features/settings/presentation/cubit/theme_cubit/theme_cubit.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,15 +12,18 @@ class AppearanceView extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(title: const Text('Appearance'), centerTitle: true),
+          appBar: AppBar(title: Text('appearance'.tr()), centerTitle: true),
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Theme Settings',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                Text(
+                  'theme_settings'.tr(),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 20),
                 _buildThemeSelector(context, state),
@@ -38,13 +42,13 @@ class AppearanceView extends StatelessWidget {
       elevation: 4,
       child: SwitchListTile(
         title: Text(
-          state is DarkThemeState ? 'Dark Theme' : 'Light Theme',
+          state is DarkThemeState ? 'dark_theme'.tr() : 'light_theme'.tr(),
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         subtitle: Text(
           state is DarkThemeState
-              ? 'Enable dark mode for a darker appearance'
-              : 'Enable light mode for a lighter appearance',
+              ? 'enable_dark_mode'.tr()
+              : 'enable_light_mode'.tr(),
         ),
         secondary: Icon(
           state is DarkThemeState ? Icons.dark_mode : Icons.light_mode,
@@ -68,19 +72,19 @@ class AppearanceView extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Theme Preview',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        Text(
+          'theme_preview'.tr(),
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 16),
         Wrap(
           spacing: 12,
           runSpacing: 12,
           children: [
-            _buildColorItem('Primary', colorScheme.primary),
-            _buildColorItem('Secondary', colorScheme.secondary),
-            _buildColorItem('Background', colorScheme.surface),
-            _buildColorItem('Surface', colorScheme.surface),
+            _buildColorItem('primary'.tr(), colorScheme.primary),
+            _buildColorItem('secondary'.tr(), colorScheme.secondary),
+            _buildColorItem('background'.tr(), colorScheme.surface),
+            _buildColorItem('surface'.tr(), colorScheme.surface),
           ],
         ),
         const SizedBox(height: 24),
@@ -89,7 +93,7 @@ class AppearanceView extends StatelessWidget {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {},
-                child: const Text('Sample Button'),
+                child: Text('sample_button'.tr()),
               ),
             ),
           ],
@@ -97,11 +101,11 @@ class AppearanceView extends StatelessWidget {
         const SizedBox(height: 12),
         Row(
           children: [
-            TextButton(onPressed: () {}, child: const Text('Text Button')),
+            TextButton(onPressed: () {}, child: Text('text_button'.tr())),
             const SizedBox(width: 12),
             OutlinedButton(
               onPressed: () {},
-              child: const Text('Outlined Button'),
+              child: Text('outlined_button'.tr()),
             ),
           ],
         ),
@@ -112,14 +116,15 @@ class AppearanceView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Sample Card',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                Text(
+                  'sample_card'.tr(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  'This is how cards will appear in the app with the selected theme.',
-                ),
+                Text('card_description'.tr()),
               ],
             ),
           ),

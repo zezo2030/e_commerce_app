@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -36,7 +37,7 @@ class ProfileHeader extends StatelessWidget {
               // Navigate to edit profile screen
             },
             icon: const Icon(Icons.edit),
-            label: const Text('Edit Profile'),
+            label: Text('edit_profile'.tr()),
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
               foregroundColor: Theme.of(context).primaryColor,

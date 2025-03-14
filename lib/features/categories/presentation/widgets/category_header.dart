@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CategoryHeader extends StatelessWidget {
   final VoidCallback onFilterTap;
@@ -16,7 +17,7 @@ class CategoryHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'All Categories',
+            'categories'.tr(),
             style: theme.textTheme.titleLarge?.copyWith(
               fontSize: 20.sp,
               fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,7 @@ class CategoriesSection extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.w),
           child: Text(
-            'Categories',
+            'categories'.tr(),
             style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold),
           ),
         ),
@@ -23,35 +24,35 @@ class CategoriesSection extends StatelessWidget {
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 16.0.w),
             scrollDirection: Axis.horizontal,
-            children: const [
+            children: [
               CategoryItem(
                 icon: FontAwesomeIcons.shirt,
-                label: 'Fashion',
+                label: 'fashion'.tr(),
                 color: Colors.blue,
               ),
               CategoryItem(
                 icon: FontAwesomeIcons.mobileScreen,
-                label: 'Electronics',
+                label: 'electronics'.tr(),
                 color: Colors.red,
               ),
               CategoryItem(
                 icon: FontAwesomeIcons.laptopCode,
-                label: 'Computers',
+                label: 'computers'.tr(),
                 color: Colors.purple,
               ),
               CategoryItem(
                 icon: FontAwesomeIcons.house,
-                label: 'Home',
+                label: 'home'.tr(),
                 color: Colors.orange,
               ),
               CategoryItem(
                 icon: FontAwesomeIcons.sprayCan,
-                label: 'Beauty',
+                label: 'beauty'.tr(),
                 color: Colors.pink,
               ),
               CategoryItem(
                 icon: FontAwesomeIcons.baseball,
-                label: 'Sports',
+                label: 'sports'.tr(),
                 color: Colors.green,
               ),
             ],
