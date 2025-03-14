@@ -36,14 +36,14 @@ A modern Flutter e-commerce application with a beautiful UI, multi-language supp
 
 <p align="center">
   <img src="assets/screen/Screenshot 2025-03-14 185939.png" width="250" alt="Home Screen Light Mode">
-  <img src="assets/screen/home_screen_dark.png" width="250" alt="Home Screen Dark Mode">
-  <img src="assets/screen/categories_screen.png" width="250" alt="Categories Screen">
+  <img src="assets/screen/Screenshot 2025-03-14 190005.png" width="250" alt="Home Screen Dark Mode">
+  <img src="assets/screen/Screenshot 2025-03-14 185952.png" width="250" alt="Categories Screen">
 </p>
 
 <p align="center">
   <img src="assets/screen/product_details.png" width="250" alt="Product Details">
   <img src="assets/screen/cart_screen.png" width="250" alt="Shopping Cart">
-  <img src="assets/screen/settings_screen.png" width="250" alt="Settings Screen">
+  <img src="assets/screen/Screenshot 2025-03-14 185906.png" width="250" alt="Settings Screen">
 </p>
 
 ## Language Support
@@ -57,7 +57,7 @@ Language can be changed from the settings menu.
 
 <p align="center">
   <img src="assets/screen/english_ui.png" width="250" alt="English UI">
-  <img src="assets/screen/arabic_ui.png" width="250" alt="Arabic UI">
+  <img src="assets/screen/Screenshot 2025-03-14 185906.png" width="250" alt="Arabic UI">
 </p>
 
 ---
