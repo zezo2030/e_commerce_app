@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTheme {
   static final ThemeData darkTheme = ThemeData(
@@ -27,9 +28,14 @@ class AppTheme {
     cardTheme: CardTheme(color: Colors.grey[800], elevation: 2),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: Colors.grey[900],
-      selectedItemColor: AppColors.accentPurple,
+      selectedItemColor: AppColors.white,
       selectedIconTheme: const IconThemeData(color: AppColors.white),
       unselectedItemColor: Colors.grey,
+      selectedLabelStyle: TextStyle(
+        color: AppColors.white,
+        fontSize: 12.sp,
+        fontWeight: FontWeight.w600,
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

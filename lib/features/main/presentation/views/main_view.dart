@@ -30,11 +30,7 @@ class MainView extends StatelessWidget {
             currentIndex: selectedIndex,
             onTap: (index) => context.read<MainCubit>().changeIndex(index),
             selectedItemColor: AppColors.primaryButton,
-            selectedLabelStyle: TextStyle(
-              color: Theme.of(context).primaryColor,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.w600,
-            ),
+            selectedLabelStyle:Theme.of(context).bottomNavigationBarTheme.selectedLabelStyle,
             unselectedLabelStyle: TextStyle(
               color: Colors.grey,
               fontSize: 12.sp,

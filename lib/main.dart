@@ -10,10 +10,9 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // تهيئة Easy Localization
   await EasyLocalization.ensureInitialized();
 
-  // تهيئة Firebase
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // setup Service Locator

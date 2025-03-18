@@ -29,7 +29,7 @@ class _HomeViewState extends State<HomeView> {
             SliverToBoxAdapter(child: SizedBox(height: 15.h)),
             SliverToBoxAdapter(child: const BannerCarousel()),
             SliverToBoxAdapter(child: SizedBox(height: 20.h)),
-            SliverToBoxAdapter(child: const FeaturedProducts()),
+            SliverToBoxAdapter(child: FeaturedProducts()),
             SliverToBoxAdapter(child: SizedBox(height: 20.h)),
             SliverToBoxAdapter(child: const SpecialOffers()),
             SliverToBoxAdapter(child: SizedBox(height: 50.h)),

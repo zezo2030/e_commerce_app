@@ -1,10 +1,54 @@
+import 'package:e_commerce_app/features/home/presentation/model/product_model.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FeaturedProducts extends StatelessWidget {
-  const FeaturedProducts({super.key});
+  FeaturedProducts({super.key});
+
+  List<ProductModel> products = [
+    ProductModel(
+      id: '1',
+      name: 'wireless_headphones'.tr(),
+      desc: 'wireless_headphones_desc'.tr(),
+      price: 100,
+      discount: 10,
+      img: 'assets/images/Frame.png',
+      isFavorites: false,
+      category: 'electronics',
+    ),
+    ProductModel(
+      id: '2',
+      name: 'smart_watch'.tr(),
+      desc: 'smart_watch_desc'.tr(),
+      price: 100,
+      discount: 10,
+      img: 'assets/images/Frame.png',
+      isFavorites: false,
+      category: 'electronics',
+    ),
+    ProductModel(
+      id: '3',
+      name: 'summer_tshirt'.tr(),
+      desc: 'summer_tshirt_desc'.tr(),
+      price: 100,
+      discount: 10,
+      img: 'assets/images/Frame.png',
+      isFavorites: false,
+      category: 'fashion',
+    ),
+    ProductModel(
+      id: '4',
+      name: 'running_shoes'.tr(),
+      desc: 'running_shoes_desc'.tr(),
+      price: 100,
+      discount: 10,
+      img: 'assets/images/Frame.png',
+      isFavorites: false,
+      category: 'sports',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,36 +80,8 @@ class FeaturedProducts extends StatelessWidget {
           childAspectRatio: 0.7,
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          children: [
-            ProductCard(
-              imageUrl: 'assets/images/Frame.png',
-              name: 'wireless_headphones'.tr(),
-              category: 'electronics'.tr(),
-              price: 89.99,
-              discountPercent: 20,
-            ),
-            ProductCard(
-              imageUrl: "assets/images/Frame.png",
-              name: 'smart_watch'.tr(),
-              category: 'electronics'.tr(),
-              price: 129.99,
-              discountPercent: 0,
-            ),
-            ProductCard(
-              imageUrl: 'assets/images/Frame.png',
-              name: 'summer_tshirt'.tr(),
-              category: 'fashion'.tr(),
-              price: 29.99,
-              discountPercent: 15,
-            ),
-            ProductCard(
-              imageUrl: 'assets/images/Frame.png',
-              name: 'running_shoes'.tr(),
-              category: 'sports'.tr(),
-              price: 79.99,
-              discountPercent: 0,
-            ),
-          ],
+          children:
+              products.map((product) => ProductCard(product: product)).toList(),
         ),
       ],
     );
@@ -73,24 +89,13 @@ class FeaturedProducts extends StatelessWidget {
 }
 
 class ProductCard extends StatelessWidget {
-  final String imageUrl;
-  final String name;
-  final String category;
-  final double price;
-  final int discountPercent;
+  final ProductModel product;
 
-  const ProductCard({
-    super.key,
-    required this.imageUrl,
-    required this.name,
-    required this.category,
-    required this.price,
-    required this.discountPercent,
-  });
+  const ProductCard({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
-    final discountedPrice = price * (1 - discountPercent / 100);
+    final discountedPrice = product.price * (1 - product.discount / 100);
 
     return Container(
       decoration: BoxDecoration(
@@ -116,13 +121,13 @@ class ProductCard extends StatelessWidget {
                   topRight: Radius.circular(12.r),
                 ),
                 child: Image.asset(
-                  imageUrl,
+                  product.img,
                   height: 130.h,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),
-              if (discountPercent > 0)
+              if (product.discount > 0)
                 Positioned(
                   top: 8.h,
                   left: 8.w,
@@ -136,7 +141,7 @@ class ProductCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(4.r),
                     ),
                     child: Text(
-                      '-$discountPercent%',
+                      '-$product.discount%',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 12.sp,
@@ -169,12 +174,12 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  category,
+                  product.category,
                   style: TextStyle(color: Colors.grey[600], fontSize: 12.sp),
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  name,
+                  product.name,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14.sp,
@@ -193,9 +198,9 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 5.w),
-                    if (discountPercent > 0)
+                    if (product.discount > 0)
                       Text(
-                        '\$${price.toStringAsFixed(2)}',
+                        '\$${product.price.toStringAsFixed(2)}',
                         style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: Colors.grey,
